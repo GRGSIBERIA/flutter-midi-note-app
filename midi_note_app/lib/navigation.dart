@@ -11,85 +11,47 @@ class Navigation extends StatefulWidget
 class _Navigation extends State
 {
   int _selectedIndex = 0;
-  List<BottomNavigationBarItem> _bottomNavigationBarItems = [];
-
-  static const _navigationIcons = [
-    Icons.home,
-    Icons.home,
-    Icons.home,
-    Icons.info
+  static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  static const List<Widget> _widgetOptions = <Widget>[
+    Text(
+      'Index 0: Home',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 1: Business',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 2: School',
+      style: optionStyle,
+    ),
   ];
 
-  static const _navigationItemNames = [
-    "周波数",
-    "ノート番号",
-    "その他",
-    "情報"
-  ];
-
-  @override
-  void initState()
-  {
-    super.initState();
-    _bottomNavigationBarItems.add(_updateActiveState(0));
-    for (var i = 1; i < _navigationItemNames.length; i++)
-    {
-      _bottomNavigationBarItems.add(_updateDeactiveState(i));
-    }
-  }
-
-  BottomNavigationBarItem _updateActiveState(int index) 
-  {
-    return BottomNavigationBarItem(
-      icon: Icon(
-        _navigationIcons[index],
-        color: Colors.black87
-      ),
-      title: Text(
-        _navigationItemNames[index],
-        style: TextStyle(
-          color: Colors.black87
-        )
-      )
-    );
-  }
-
-  BottomNavigationBarItem _updateDeactiveState(int index)
-  {
-    return BottomNavigationBarItem(
-      icon: Icon(
-        _navigationIcons[index],
-        color: Colors.black26
-      ),
-      title: Text(
-        _navigationItemNames[index],
-        style: TextStyle(
-          color: Colors.black26
-        )
-      )
-    );
-  }
-
-  void _onItemTapped(int index)
-  {
+  void _onItemTapped(int index) {
     setState(() {
-      _bottomNavigationBarItems[_selectedIndex] = _updateDeactiveState(_selectedIndex);
-      _bottomNavigationBarItems[index] = _updateActiveState(index);
       _selectedIndex = index;
     });
-  }
-
-  List<BottomNavigationBarItem> _itemsResult()
-  {
-    return _bottomNavigationBarItems;
   }
 
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      type: BottomNavigationBarType.fixed,
-      items: _itemsResult(),
+      items: const <BottomNavigationBarItem>[
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          title: Text('周波数'),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.business),
+          title: Text('ノート番号'),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.info),
+          title: Text('情報'),
+        ),
+      ],
       currentIndex: _selectedIndex,
+      selectedItemColor: Colors.amber[800],
       onTap: _onItemTapped,
     );
   }
