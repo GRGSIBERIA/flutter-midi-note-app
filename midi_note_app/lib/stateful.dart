@@ -16,7 +16,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
 
   static const List<Widget> _widgetOptions = <Widget>[
     Text(
-      'Settings',
+      'Index 1: Business',
       style: optionStyle,
     ),
     Text(
@@ -47,8 +47,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            title: Text('Settings'),
+            icon: Icon(Icons.straighten),
+            title: Text('String'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.business),
