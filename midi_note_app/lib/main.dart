@@ -1,22 +1,17 @@
 import 'package:flutter/material.dart';
-import 'header.dart';
-import 'navigation.dart';
+import 'stateful.dart';
 
-void main() {
-	runApp(MyApp());
-}
+void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget
-{
-	@override
-	Widget build(BuildContext context) {
-		return MaterialApp(
-			debugShowCheckedModeBanner: false,
-			home: Scaffold(
-				appBar: Header(),
-				body: Center(child: Text("ホゲ")),
-				bottomNavigationBar: Navigation(),
-			)
-		);
-	}
+/// This Widget is the main application widget.
+class MyApp extends StatelessWidget {
+  static const String _title = 'String Computer';
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: _title,
+      home: MyStatefulWidget(),
+    );
+  }
 }
